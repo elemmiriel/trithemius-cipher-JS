@@ -15,11 +15,12 @@
     <label for="key">Секретный ключ</label>
     <input type="number" id="key" class="key" value="0";>
     <p>
-    <label for="output-text">Зашифрованный текст</label>
-    <textarea id="output-text" class="text-area" readonly>Здесь будет зашифрованный текст.</textarea>
+    <label for="output-text">Результат</label>
+    <textarea id="output-text" class="text-area" readonly>Результат шифровки/дешифровки.</textarea>
     <div class="buttons">
       <input type="button" id="button1" value="Зашифровать" onclick="cipher()">
-      <input type="reset">
+      <input type="button" id="button2" value="Расшифровать" onclick="decipher()">
+      <input type="reset" value="">
     </div>
   </form>
 <script src="code.js"></script>
