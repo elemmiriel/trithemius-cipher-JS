@@ -1,24 +1,40 @@
-function cipher () {
-  var alphabet = ['А','Б','В','Г','Д','Е','Ё','Ж','З','И','Й','К','Л','М','Н','О','П','Р','С','Т','У','Ф','Х','Ц','Ч','Ш','Щ','Ъ','Ы','Ь','Э','Ю','Я','а','б','в','г','д','е','ё','ж','з','и','й','к','л','м','н','о','п','р','с','т','у','ф','х','ц','ч','ш','щ','ъ','ы','ь','э','ю','я','0','1','2','3','4','5','6','7','8','9',' ',',','.','!','?',';'];
+var alphabet = ['А','Б','В','Г','Д','Е','Ё','Ж','З','И','Й','К','Л','М','Н','О','П','Р','С','Т','У','Ф','Х','Ц','Ч','Ш','Щ','Ъ','Ы','Ь','Э','Ю','Я','а','б','в','г','д','е','ё','ж','з','и','й','к','л','м','н','о','п','р','с','т','у','ф','х','ц','ч','ш','щ','ъ','ы','ь','э','ю','я','0','1','2','3','4','5','6','7','8','9',' ',',','.','!','?',';'];
 
+function cipher () {
   var n = alphabet.length; //n - мощность алфавита
   var k = document.getElementById("key").value; //значение поля секретный ключ
   var textInput = document.getElementById("input-text").value; //текст из поля Исходный текст
   var textOutput = document.getElementById("output-text");
   textInput.split(/(\w)/i); //Разбиваем исходный текст на массив посимвольно
-  var str="";
+  var str= ""; //Строковая переменная для вывода
+  var m = -1;
   
-  console.log(textInput);
+  console.log(textInput); //для контроля
   
   for (i = 0; i < textInput.length; i++){
-//  Здесь можно пошагово увидеть результат
-    console.log("i=" + i);
-    console.log("k=" + k);
-
-    str = str + alphabet[(i+k)%n]; //Строка вывода
-    console.log(alphabet[(i+k)%n]);
+    m= find(alphabet, textInput[i]); //Функция find() вычисляет индекс текущего символа в массиве алфавита
+    
+    if (m!==-1) {     
+        console.log("m=" + m); //для контроля
+        console.log("k=" + k); //для контроля
+        str = str + alphabet[ (m + k) % n ]; //Строка вывода формируется посимвольно. Мат. модель см. в википедии.
+        console.log(alphabet[ (m + k) % n ] ); //для контроля  
+    }else{ //Отсутствующие в алфавите программы символы заменяются нижним подчёркиванием.
+      str = str + '_';
+    }
   }
-  
-  textOutput.innerHTML = '';
+  textOutput.innerHTML = ""; //не обязательно
   textOutput.innerHTML = str;
+}
+
+function find(array, value) {
+  if (array.indexOf) { // если метод существует
+    return array.indexOf(value);
+  }
+
+  for (var i = 0; i < array.length; i++) {
+    if (array[i] === value) return i;
+  }
+
+  return -1;
 }
