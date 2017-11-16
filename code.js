@@ -6,22 +6,20 @@ function cipher () {
   var textInput = document.getElementById("input-text").value; //текст из поля Исходный текст
   var textOutput = document.getElementById("output-text");
   textInput.split(/(\w)/i); //Разбиваем исходный текст на массив посимвольно
-  var str=""; //Строковая переменная для вывода
+  var str= ""; //Строковая переменная для вывода
   var m = -1;
   
-  console.log(textInput);
+  console.log(textInput); //для контроля
   
   for (i = 0; i < textInput.length; i++){
-    m= find(alphabet,textInput[i]);
-      if (m!==-1) {
-////////////////////////////////////////        
-        /*  Здесь можно пошагово увидеть значения переменных */
-        console.log("m=" + m);
-        console.log("k=" + k);
-//////////////////////////////////////
-        str = str + alphabet[(m+k)%n]; //Строка вывода формируется посимвольно. Мат. модель см. в википедии.
-        console.log(alphabet[(m+k)%n]);
-      }else{ //Отсутствующие в алфавите программы символы заменяются нижним подчёркиванием.
+    m= find(alphabet, textInput[i]); //Функция find() вычисляет индекс текущего символа в массиве алфавита
+    
+    if (m!==-1) {     
+        console.log("m=" + m); //для контроля
+        console.log("k=" + k); //для контроля
+        str = str + alphabet[ (m + k) % n ]; //Строка вывода формируется посимвольно. Мат. модель см. в википедии.
+        console.log(alphabet[ (m + k) % n ] ); //для контроля  
+    }else{ //Отсутствующие в алфавите программы символы заменяются нижним подчёркиванием.
       str = str + '_';
     }
   }
@@ -29,7 +27,6 @@ function cipher () {
   textOutput.innerHTML = str;
 }
 
-//Функция find() вычисляет индекс символа в массиве алфавита
 function find(array, value) {
   if (array.indexOf) { // если метод существует
     return array.indexOf(value);
