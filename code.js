@@ -48,6 +48,7 @@ function decipher () {
         console.log("m=" + m);
         console.log("k=" + k);
 //////////////////////////////////////
+//попробовать без изменений м
 
         while((m-k)<0){
           m+=n;
