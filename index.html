@@ -3,7 +3,7 @@
 <head>
   <html lang="ru">
   <meta name="viewport" content="width=device-width">
-  <link href="styles.css" rel="stylesheet">
+  <!--<link href="styles.css" rel="stylesheet">-->
   <title>Шифр Тритемиуса</title>
 </head>
 <body>
@@ -12,8 +12,10 @@
     <label for="input-text">Исходный текст</label>
     <textarea id="input-text" class="text-area" autofocus>Вставьте сюда текст.</textarea>
     <p>
-    <label for="key">Секретный ключ</label>
-    <input type="number" id="key" class="key" value="0";>
+    <label for="key1">Секретные ключи</label>
+    <input type="number" id="key1" class="key" value="0" min="0";>
+    <input type="number" id="key2" class="key" value="0" min="0";>
+    <input type="number" id="key3" class="key" value="0" min="0";>
     <p>
     <label for="output-text">Зашифрованный текст</label>
     <textarea id="output-text" class="text-area" readonly>Здесь будет зашифрованный текст.</textarea>
@@ -22,6 +24,6 @@
       <input type="reset">
     </div>
   </form>
-<script src="code.js"></script>
+<!--<script src="code.js"></script>-->
 </body>
 </html>
